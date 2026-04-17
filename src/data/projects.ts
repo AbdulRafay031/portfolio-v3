@@ -110,7 +110,7 @@ export const projects: Project[] = [
     categories: ["Frontend", "Next.js"],
     tech: ["Next.js", "Tailwind CSS", "EmailJS"],
     links: {
-      
+      live:   "https://portfolio-v3-sage-delta.vercel.app/",
       github: "https://github.com/AbdulRafay031",
     },
   },
