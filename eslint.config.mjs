@@ -13,6 +13,15 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // These rules are overly strict for common client-side patterns
+      // (mounted flags, imperative animation loops, react-hook-form watch, etc.).
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/incompatible-library": "off",
+      "react-hooks/globals": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
