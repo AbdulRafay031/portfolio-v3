@@ -11,19 +11,30 @@ import { FiCheck, FiLoader } from "react-icons/fi";
 const schema = z.object({
   name: z.string().min(2, "Name is too short").max(80),
   email: z.string().email("Enter a valid email"),
-  subject: z.enum(["Job Opportunity", "Freelance", "Collaboration", "Other"]),
+  subject: z.enum([
+    "Job Opportunity",
+    "Freelance",
+    "Collaboration",
+    "Other",
+  ]),
   message: z.string().min(10, "Message is too short").max(500),
-  website: z.string().optional(), // honeypot
+  website: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
 
-const subjects = ["Job Opportunity", "Freelance", "Collaboration", "Other"] as const;
+const subjects = [
+  "Job Opportunity",
+  "Freelance",
+  "Collaboration",
+  "Other",
+] as const;
 
 export function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+
   const [error, setError] = useState<string | null>(null);
 
   const {
@@ -35,7 +46,9 @@ export function ContactForm() {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onTouched",
-    defaultValues: { subject: "Job Opportunity" },
+    defaultValues: {
+      subject: "Job Opportunity",
+    },
   });
 
   const message = watch("message") ?? "";
@@ -48,7 +61,9 @@ export function ContactForm() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(values),
       });
 
@@ -61,12 +76,23 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 } });
+
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.7 },
+      });
+
       reset();
-      setTimeout(() => setStatus("idle"), 2500);
+
+      setTimeout(() => {
+        setStatus("idle");
+      }, 2500);
     } catch (e) {
       setStatus("error");
-      setError(e instanceof Error ? e.message : "Something went wrong");
+      setError(
+        e instanceof Error ? e.message : "Something went wrong"
+      );
     }
   });
 
@@ -74,16 +100,19 @@ export function ContactForm() {
     <form
       onSubmit={onSubmit}
       className={cn(
-        "rounded-3xl border border-border bg-bg-card/40 p-8 backdrop-blur-md transition",
-        status === "error" && "animate-[shake_300ms_ease-in-out]"
+        "w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-bg-card/40 p-4 sm:p-6 lg:p-8 backdrop-blur-md transition",
+        status === "error" &&
+          "animate-[shake_300ms_ease-in-out]"
       )}
     >
-      <div className="text-sm font-semibold text-text-muted">Send a message</div>
-      <div className="mt-2 text-xl font-bold text-text-primary">
+      <div className="text-sm font-semibold text-text-muted">
+        Send a message
+      </div>
+
+      <div className="mt-2 text-lg sm:text-xl font-bold text-text-primary">
         Tell me about your project.
       </div>
 
-      {/* honeypot */}
       <input
         tabIndex={-1}
         autoComplete="off"
@@ -91,7 +120,7 @@ export function ContactForm() {
         {...register("website")}
       />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-6 sm:mt-8 grid gap-4 md:grid-cols-2">
         <Field label="Name" error={errors.name?.message}>
           <input
             {...register("name")}
@@ -99,6 +128,7 @@ export function ContactForm() {
             placeholder="Your name"
           />
         </Field>
+
         <Field label="Email" error={errors.email?.message}>
           <input
             {...register("email")}
@@ -110,7 +140,10 @@ export function ContactForm() {
 
       <div className="mt-4">
         <Field label="Subject" error={errors.subject?.message}>
-          <select {...register("subject")} className={inputClass(false)}>
+          <select
+            {...register("subject")}
+            className={inputClass(false)}
+          >
             {subjects.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -124,9 +157,13 @@ export function ContactForm() {
         <Field label="Message" error={errors.message?.message}>
           <textarea
             {...register("message")}
-            className={cn(inputClass(Boolean(errors.message)), "min-h-[140px]")}
+            className={cn(
+              inputClass(Boolean(errors.message)),
+              "min-h-[120px] sm:min-h-[140px]"
+            )}
             placeholder="What are you building? What’s the timeline?"
           />
+
           <div className="mt-2 text-right text-xs font-semibold text-text-muted">
             {chars} / 500
           </div>
@@ -134,7 +171,7 @@ export function ContactForm() {
       </div>
 
       {error ? (
-        <div className="mt-4 rounded-2xl border border-accent-pink/40 bg-accent-pink/10 px-4 py-3 text-sm text-accent-pink">
+        <div className="mt-4 rounded-2xl border border-accent-pink/40 bg-accent-pink/10 px-4 py-3 text-sm text-accent-pink break-words">
           {error}
         </div>
       ) : null}
@@ -143,18 +180,20 @@ export function ContactForm() {
         type="submit"
         disabled={status === "sending"}
         data-cursor="interactive"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent-primary px-6 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60 hover:shadow-[0_0_20px_rgba(108,99,255,0.6)]"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent-primary px-4 sm:px-6 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60 hover:shadow-[0_0_20px_rgba(108,99,255,0.6)]"
       >
         {status === "sending" ? (
           <>
-            <FiLoader className="h-4 w-4 animate-spin" /> Sending…
+            <FiLoader className="h-4 w-4 animate-spin" />
+            Sending...
           </>
         ) : status === "success" ? (
           <>
-            <FiCheck className="h-4 w-4" /> Sent
+            <FiCheck className="h-4 w-4" />
+            Sent
           </>
         ) : (
-          "Send message"
+          "Send Message"
         )}
       </button>
     </form>
@@ -163,7 +202,7 @@ export function ContactForm() {
 
 function inputClass(invalid: boolean) {
   return cn(
-    "w-full rounded-2xl border bg-bg-secondary/25 px-4 py-3 text-sm text-text-secondary placeholder:text-text-muted outline-none backdrop-blur-md transition",
+    "w-full min-w-0 rounded-2xl border bg-bg-secondary/25 px-3 sm:px-4 py-3 text-sm text-text-secondary placeholder:text-text-muted outline-none backdrop-blur-md transition",
     invalid
       ? "border-accent-pink/60 focus:border-accent-pink"
       : "border-border focus:border-accent-cyan/60"
@@ -181,14 +220,19 @@ function Field({
 }) {
   return (
     <div>
-      <div className="mb-2 flex items-center justify-between gap-4">
-        <label className="text-xs font-semibold text-text-muted">{label}</label>
+      <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+        <label className="text-xs font-semibold text-text-muted">
+          {label}
+        </label>
+
         {error ? (
-          <div className="text-xs font-semibold text-accent-pink">{error}</div>
+          <div className="text-xs font-semibold break-words text-accent-pink">
+            {error}
+          </div>
         ) : null}
       </div>
+
       {children}
     </div>
   );
 }
-

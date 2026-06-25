@@ -6,6 +6,7 @@ import { LenisProvider } from "@/components/providers/lenis-provider";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteNav } from "@/components/layout/site-nav";
+import { Loader } from "@/components/ui/loader";
 
 const display = Space_Grotesk({
   variable: "--font-display",
@@ -24,19 +25,20 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rafay-portfolio-seven.vercel.app"),
+  metadataBase: new URL("https://portfolio-v3-sage-delta.vercel.app"),
   title: "Abdul Rafay | MERN Stack Developer — Karachi",
   description:
-    "Full-stack developer specializing in React, Next.js, Node.js. Available for remote & on-site roles.",
+    "Full-stack developer specializing in React, Next.js, Node.js. Micro1 Certified Frontend Engineer. Available for remote & on-site roles.",
   keywords: [
     "MERN Stack Developer Karachi",
     "Next.js Developer Pakistan",
     "React Developer",
     "Full Stack Developer Karachi",
+    "Micro1 Certified Frontend Engineer",
   ],
   openGraph: {
     type: "website",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
@@ -52,14 +54,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
+      className={`${display.variable} ${sans.variable} ${mono.variable} h-full overflow-x-hidden antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg-primary text-text-secondary">
+      <body className="min-h-screen overflow-x-hidden flex flex-col bg-bg-primary text-text-secondary">
         <ThemeProvider>
           <LenisProvider>
+            <Loader />
             <CustomCursor />
             <SiteNav />
-            <main className="flex-1">{children}</main>
+
+            <main className="flex-1 overflow-x-hidden">
+              {children}
+            </main>
+
             <SiteFooter />
           </LenisProvider>
         </ThemeProvider>

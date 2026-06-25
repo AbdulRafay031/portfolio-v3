@@ -61,14 +61,21 @@ html.light {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto,
-    Arial, sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
 }
 
 ::selection {
   background: color-mix(in oklab, var(--accent-primary) 35%, transparent);
 }
 
+/* ── Marquee animation ── */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -78,6 +85,7 @@ body {
   }
 }
 
+/* ── Shake animation (contact form error) ── */
 @keyframes shake {
   0%,
   100% {
@@ -95,4 +103,60 @@ body {
   80% {
     transform: translateX(5px);
   }
+}
+
+/* ── Animated gradient orbs (Hero background) ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: #3b82f6;
+  top: -100px;
+  left: -100px;
+}
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: #06b6c4;
+  bottom: 0;
+  right: -50px;
+  animation-delay: -4s;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* ── Scroll reveal utility (used by useScrollReveal hook via GSAP) ── */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+/* ── Page transition wrapper (used by PageTransition component) ── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
 }

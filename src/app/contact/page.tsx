@@ -22,7 +22,7 @@ export default function ContactPage() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <div className="space-y-6">
-            <CopyEmailCard email="abdul.rafay.9389@gmail.com" />
+            <CopyEmailCard email="rafay16031@gmail.com" />
 
             <div className="rounded-3xl border border-border bg-bg-card/40 p-8 backdrop-blur-md">
               <div className="flex items-center gap-3 text-sm font-semibold text-text-secondary">

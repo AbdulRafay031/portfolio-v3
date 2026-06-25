@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiAward } from "react-icons/fi";
 
 const stats = [
   { label: "Years Exp", value: "2+" },
@@ -22,13 +22,19 @@ export function AboutSnapshot() {
                 I build products that feel fast, polished, and reliable.
               </div>
               <p className="mt-4 leading-7 text-text-muted">
-                I’m a MERN Stack Developer with hands-on experience building
+                I'm a MERN Stack Developer with hands-on experience building
                 scalable web platforms including e-commerce and financial
                 systems. I focus on performance, accessibility, and clean
-                architecture — and I’m actively building AI skills through GIAIC
+                architecture — and I'm actively building AI skills through GIAIC
                 (Python, prompt engineering, agentic AI) with public repos on
                 GitHub.
               </p>
+
+              {/* ── Micro1 badge ── */}
+              <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent-primary/50 bg-accent-primary/10 px-4 py-2 text-xs font-semibold text-accent-primary">
+                <FiAward className="h-3.5 w-3.5" />
+                Micro1 Certified Frontend Engineer · June 2026
+              </div>
 
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {stats.map((s) => (
@@ -83,6 +89,7 @@ export function AboutSnapshot() {
                   "MongoDB",
                   "Tailwind",
                   "Redux",
+                  "TypeScript",
                 ].map((t) => (
                   <span
                     key={t}
@@ -99,4 +106,3 @@ export function AboutSnapshot() {
     </section>
   );
 }
-
