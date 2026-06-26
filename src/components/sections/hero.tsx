@@ -6,18 +6,24 @@ import { Container } from "@/components/layout/container";
 import { FiArrowDown, FiArrowUpRight, FiDownload } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import { HeroParticles } from "./hero-particles";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 // Staggered Framer Motion variants for the right-side stack cards
-const cardVariants = {
-  hidden: { opacity: 0, x: 30 },
-  visible: (i: number) => ({
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 30,
+  },
+  visible: {
     opacity: 1,
     x: 0,
-    transition: { delay: 0.6 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  }),
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 export function Hero() {

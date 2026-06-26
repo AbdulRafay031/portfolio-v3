@@ -1,19 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ReactNode } from "react";
 
-const pageVariants = {
-  initial: { opacity: 0, y: 20 },
+const pageVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
   exit: {
     opacity: 0,
     y: -20,
-    transition: { duration: 0.3 },
+    transition: {
+      duration: 0.3,
+    },
   },
 };
 
