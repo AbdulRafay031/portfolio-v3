@@ -3,6 +3,7 @@ import { DownloadCvButton } from "@/components/providers/cv-download-provider";
 import { FiArrowUpRight, FiArrowDown, FiDownload } from "react-icons/fi";
 import { OdooExpertise } from "@/components/v5/showcase";
 import { HeroSystem, ShowcaseBento } from "@/components/v6/showcase";
+import { AgentSwarm } from "@/components/v6/agent-swarm";
 import { projects } from "@/data/projects";
 import { experience } from "@/data/experience";
 import { ProjectVisual, Flagship, TechExplorer, MotionLab, Reveal } from "@/components/v4/experience";
@@ -10,6 +11,7 @@ import { ProjectVisual, Flagship, TechExplorer, MotionLab, Reveal } from "@/comp
 export default function Home() {
   return (
     <div className="v4-home">
+      <AgentSwarm/>
       <section className="v4-wrap v5-hero">
         <div className="v5-hero-copy"><p className="v4-kicker v6-eyebrow">ODOO TECHNO-FUNCTIONAL CONSULTANT / FULL-STACK / AI</p><h1>Engineering<br/>what&apos;s <em>next.</em></h1><p className="v5-status"><i className="v4-dot"/> Currently at <strong>TechHub</strong></p><p className="v5-role">I connect business processes, ERP and intelligent software to build systems that work in the real world.</p><div className="v4-actions"><Link className="v4-button" href="#showcase">Explore my work <FiArrowUpRight/></Link><DownloadCvButton className="v4-button secondary">Download CV <FiDownload/></DownloadCvButton></div><a className="v5-scroll" href="#showcase"><FiArrowDown/> Explore the ecosystem</a></div><HeroSystem/>
       </section>
