@@ -8,6 +8,9 @@
 .swarm-cursor.swarm-tap::before{content:"";position:absolute;left:-7px;top:-7px;width:22px;height:22px;border:1px solid var(--swarm-color);border-radius:50%;animation:swarm-ripple .55s ease-out both}
 .swarm-building .swarm-pending{opacity:.09!important;filter:blur(2px)}
 .swarm-building .swarm-selected{outline:1px dashed var(--swarm-target,#cfb5ff);outline-offset:4px;animation:swarm-reveal .5s ease-out both!important}
+.swarm-building .swarm-typing{opacity:1!important;filter:none!important;animation:none!important}
+.swarm-building .swarm-typing::after{content:"";display:inline-block;width:2px;height:.8em;background:var(--swarm-target,#cfb5ff);margin-left:4px;animation:swarm-caret .65s steps(1) infinite;vertical-align:baseline}
+@keyframes swarm-caret{50%{opacity:0}}
 .swarm-hud{position:fixed;right:20px;bottom:18px;z-index:66;width:226px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card);color:var(--text-primary);box-shadow:0 10px 35px #0003}
 .swarm-heading{display:flex;align-items:center;gap:8px;font:600 10px/1.4 var(--font-mono,monospace)}
 .swarm-heading i{width:7px;height:7px;flex:none;border-radius:50%;background:#adf77e;box-shadow:0 0 8px #adf77e}
