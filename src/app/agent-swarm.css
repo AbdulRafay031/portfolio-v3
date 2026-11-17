@@ -1,6 +1,6 @@
 .swarm-overlay{display:contents}
 .swarm-overlay[data-mode="idle"] .swarm-hud{display:none}
-.swarm-cursors{position:fixed;inset:0;pointer-events:none;z-index:65;overflow:hidden}
+.swarm-cursors{position:fixed;inset:0;max-width:100%;pointer-events:none;z-index:65;overflow:hidden;contain:strict}
 .swarm-cursor{position:absolute;top:0;left:0;visibility:hidden;pointer-events:none;transition:transform .46s cubic-bezier(.2,.9,.22,1);will-change:transform;filter:drop-shadow(0 2px 7px #0007)}
 .swarm-cursor svg{width:19px;height:24px;display:block;fill:var(--swarm-color)}
 .swarm-cursor span{position:absolute;left:14px;top:18px;padding:3px 6px;border-radius:4px;background:var(--swarm-color);color:#17171c;font:700 10px/1.35 var(--font-mono,monospace);white-space:nowrap}
@@ -26,5 +26,17 @@
 @keyframes swarm-click{50%{transform:scale(.72)}}
 @keyframes swarm-ripple{from{transform:scale(.7);opacity:1}to{transform:scale(2.6);opacity:0}}
 @keyframes swarm-reveal{from{opacity:.08;filter:blur(3px)}to{opacity:1;filter:none}}
-@media(max-width:600px){.swarm-cursor svg{width:15px;height:19px}.swarm-cursor span{font-size:8px;padding:2px 4px;left:11px;top:14px}.swarm-hud{right:10px;bottom:10px;width:190px}}
+@media(max-width:600px){
+  .swarm-overlay{display:block;min-width:0}
+  /* The mobile control is in normal document flow, never a floating bottom box. */
+  .swarm-hud,.swarm-overlay[data-mode="complete"] .swarm-hud{position:relative;inset:auto;z-index:1;width:calc(100% - 32px);max-width:100%;min-width:0;margin:12px auto 0;padding:8px 10px;border-radius:10px;box-shadow:none;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px 10px}
+  .swarm-heading{min-width:0;font-size:9px;line-height:1.45;overflow-wrap:anywhere}
+  .swarm-meter{grid-column:1/-1;grid-row:2;margin:0;height:2px}
+  .swarm-control{grid-column:2;grid-row:1;width:auto;min-height:40px;padding:6px 8px;white-space:nowrap;font-size:11px}
+  .swarm-overlay[data-mode="complete"] .swarm-hud{display:flex;justify-content:flex-end;background:transparent;border:0;padding:0}
+  .swarm-overlay[data-mode="complete"] .swarm-control{border:1px solid var(--border);min-height:40px}
+  .swarm-cursor svg{width:15px;height:19px}
+  .swarm-cursor span{font-size:8px;padding:2px 4px;left:11px;top:14px}
+  .swarm-building .swarm-selected{outline-offset:1px}
+}
 @media(prefers-reduced-motion:reduce){.swarm-overlay{display:none!important}.swarm-building .swarm-pending{opacity:1!important;filter:none;pointer-events:auto}}

@@ -6,6 +6,7 @@ import "./portfolio-v5.css";
 import "./portfolio-v6.css";
 import "./cv-selector.css";
 import "./agent-swarm.css";
+import "./responsive.css";
 import { CvDownloadProvider } from "@/components/providers/cv-download-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SiteFooter } from "@/components/layout/site-footer";

@@ -44,7 +44,9 @@ export function AgentSwarm() {
     let frame = 0, enabled = false, finished = 0, initializedAt = 0;
     const rectVisible = (r: DOMRect) => r.bottom>80 && r.top<innerHeight-20 && r.right>0 && r.left<innerWidth;
     const move = (cursor: HTMLElement,x:number,y:number) => {
-      const transform = `translate3d(${Math.round(Math.max(4,Math.min(innerWidth-105,x)))}px,${Math.round(Math.max(65,Math.min(innerHeight-35,y)))}px,0)`;
+      const viewportWidth=document.documentElement.clientWidth;
+      const viewportHeight=window.visualViewport?.height??innerHeight;
+      const transform = `translate3d(${Math.round(Math.max(4,Math.min(viewportWidth-105,x)))}px,${Math.round(Math.max(65,Math.min(viewportHeight-40,y)))}px,0)`;
       if (cursor.style.transform !== transform) cursor.style.transform=transform;
     };
     const restoreText = (task:Task) => {
@@ -137,7 +139,10 @@ export function AgentSwarm() {
       // This means scrolling after ten seconds continues the build.
       tasks.filter(t=>t.state==="pending"&&!t.el.isConnected).forEach(settle);
       const pending=tasks.filter(t=>t.state==="pending" && rectVisible(t.el.getBoundingClientRect()));
-      for(let i=0;i<AGENTS&&pending.length;i++)if(!slots[i])startTask(pending.shift()!,i,now);
+      // Keep all 15 agents on desktop; schedule fewer simultaneous visual tasks
+      // on narrow touch screens, where labels would otherwise cover the content.
+      const parallel = matchMedia("(max-width: 600px)").matches ? 6 : AGENTS;
+      for(let i=0;i<parallel&&pending.length;i++)if(!slots[i])startTask(pending.shift()!,i,now);
       renderProgress();
       if(finished>=tasks.length){stop();return;}
       if(slots.some(Boolean)||now-initializedAt<500)frame=requestAnimationFrame(tick);

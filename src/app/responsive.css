@@ -1,0 +1,60 @@
+/* Final responsive constraints for the portfolio and its animated build layer. */
+html,body{max-width:100%;overflow-x:clip}
+main,#main-content,.v4-home{min-width:0;max-width:100%}
+.v4-home{overflow-x:clip}
+.v4-wrap,.v5-hero-copy,.v6-orbit-system,.v4-section-head>div,.v4-flag-info,.v4-tech-content,.v4-lab>div{min-width:0;max-width:100%}
+.v4-home img,.v4-home video{max-width:100%}
+.v4-section-head,.v4-actions,.v4-project-meta,.v6-work-card footer{min-width:0}
+.v4-section-head h2,.v5-hero h1,.v4-contact h2,.v4-project-meta h3,.v4-timeline-row h3{overflow-wrap:break-word}
+.v4-project-grid>*,.v4-bento>*,.v5-expertise-grid>*,.v6-showcase>*,.v4-tech>*{min-width:0}
+.v4-text-link,.v4-button{max-width:100%}
+.v4-button svg,.v4-text-link svg{flex-shrink:0}
+@media(max-width:900px){
+  .v4-flag-grid,.v4-lab,.v4-hero-grid{grid-template-columns:minmax(0,1fr)}
+  .v5-expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+  .v5-hero{grid-template-columns:minmax(0,1fr)}
+  .v6-showcase{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .v5-hero::before{inset-inline:0}
+}
+@media(max-width:720px){
+  .v5-expertise-grid,.v4-tech{grid-template-columns:minmax(0,1fr)}
+  .v4-tech-content{padding:20px}
+  .v4-section-head{flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .v4-wrap{width:calc(100% - 32px);max-width:calc(100% - 32px)}
+  .v5-hero{padding-top:24px}
+  .v5-hero h1{font-size:clamp(39px,11.4vw,66px);letter-spacing:-.055em}
+  .v4-heading{font-size:clamp(35px,10vw,54px)}
+  .v4-contact h2{font-size:clamp(39px,11vw,65px)}
+  .v6-showcase,.v4-project-grid,.v4-bento,.v4-tech{grid-template-columns:minmax(0,1fr)}
+  .v6-fatimaz,.v6-work-intro{grid-column:auto}
+  .v6-orbit-system{min-height:0;aspect-ratio:1.1}
+  .v6-orbit-art{inset:0;overflow:hidden}
+  .v6-orbit-caption{left:2%;right:2%;bottom:0;overflow-wrap:anywhere}
+  .v6-work-card{padding:14px}
+  .v6-erp-ui,.v6-ai-ui{min-height:180px}
+  .v4-section-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .v4-timeline-row{grid-template-columns:25px minmax(0,1fr)}
+  .v4-timeline-row>span:last-child{grid-column:2}
+  .v4-project-visual{padding:16px;min-height:190px}
+  .v4-project-visual.fatimaz-visual{padding:0}
+  .v4-visual-title{max-width:100%;overflow-wrap:anywhere}
+  .v4-visual-pills span{max-width:100%;overflow-wrap:anywhere}
+  .v4-lab,.v4-bento>div,.v5-expertise-grid>div{padding:18px}
+  .v4-tabs button{max-width:100%;white-space:normal}
+  .v4-range{flex-wrap:wrap}
+  .v4-actions{gap:8px}
+  .v4-button{gap:9px;padding:12px 15px}
+  .cv-selector{max-width:calc(100% - 24px);max-height:calc(100dvh - 24px);overscroll-behavior:contain}
+  .cv-option-copy{overflow-wrap:anywhere}
+}
+@media(max-width:360px){
+  .v4-wrap{width:calc(100% - 24px);max-width:calc(100% - 24px)}
+  .v5-hero h1{font-size:37px}
+  .v4-actions>.v4-button{width:100%}
+  .v6-chip{padding:7px 6px;font-size:9px}
+  .v6-chip svg{width:12px;height:12px}
+}
