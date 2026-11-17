@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { certifications } from "@/data/certifications";
-import { FiExternalLink, FiX, FiAward } from "react-icons/fi";
+import { FiExternalLink, FiX } from "react-icons/fi";
 
 export function CertificationsWall() {
   const [selected, setSelected] = useState<(typeof certifications)[0] | null>(null);

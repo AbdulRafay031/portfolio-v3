@@ -15,7 +15,7 @@ export function FeaturedProjects() {
               Featured Projects
             </div>
             <h2 className="mt-2 text-3xl font-extrabold text-text-primary [font-family:var(--font-display)] sm:text-4xl">
-              Work I'm proud of.
+              Work I’m proud of.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-text-muted">
               A curated set of projects showing full-stack capability, strong UI

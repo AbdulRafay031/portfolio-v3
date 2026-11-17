@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FiArrowUpRight, FiGithub, FiSearch } from "react-icons/fi";
 import { projectFilters, projects, type ProjectCategory } from "@/data/projects";
 import { cn } from "@/lib/cn";
+import { ProjectVisual } from "@/components/v4/experience";
 
 type Filter = (typeof projectFilters)[number];
 
@@ -17,6 +18,7 @@ function matchesFilter(p: (typeof projects)[number], f: Filter) {
 export function ProjectsGallery() {
   const [filter, setFilter] = useState<Filter>("All");
   const [query, setQuery] = useState("");
+  const [listMode,setListMode]=useState(false);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -62,10 +64,11 @@ export function ProjectsGallery() {
           />
         </div>
       </div>
+      <div className="mt-5 flex items-center justify-between text-sm text-text-muted"><span>{visible.length} projects</span><div className="v4-tabs"><button aria-pressed={!listMode} className={!listMode?"active":""} onClick={()=>setListMode(false)}>Grid</button><button aria-pressed={listMode} className={listMode?"active":""} onClick={()=>setListMode(true)}>List</button></div></div>
 
       <motion.div
         layout
-        className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        className={cn("mt-6 grid gap-6",!listMode&&"md:grid-cols-2")}
       >
         {visible.map((p) => (
           <motion.div
@@ -73,6 +76,7 @@ export function ProjectsGallery() {
             key={p.slug}
             className="group relative overflow-hidden rounded-3xl border border-border bg-bg-card/40 p-7 backdrop-blur-md transition hover:-translate-y-1 hover:border-accent-primary/60 hover:shadow-[0_0_22px_rgba(108,99,255,0.25)]"
           >
+            {!listMode&&<Link href={`/projects/${p.slug}`} className="block mb-6"><ProjectVisual project={p}/></Link>}
             <div className="flex flex-wrap gap-2">
               {p.tech.slice(0, 4).map((t) => (
                 <span

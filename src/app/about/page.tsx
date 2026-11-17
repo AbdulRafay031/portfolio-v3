@@ -5,7 +5,7 @@ import { IntroVideo } from "@/components/sections/intro-video";
 export const metadata = {
   title: "About | Abdul Rafay",
   description:
-    "Learn more about Abdul Rafay — Micro1 Certified Frontend Engineer and MERN Stack Developer from Karachi.",
+    "Abdul Rafay — Odoo Techno-Functional Consultant at TechHub, full-stack developer and AI solutions builder from Karachi.",
 };
 
 const careerTimeline = [
@@ -13,7 +13,8 @@ const careerTimeline = [
   { year: "2023", event: "Started freelancing on Fiverr as a Frontend / MERN Stack Developer" },
   { year: "2023–24", event: "Web & Mobile Application Development course at SMIT" },
   { year: "2025–26", event: "Agentic AI course — Python, Prompt Engineering & AI workflows at GIAIC" },
-  { year: "Apr 2026–Present", event: "Frontend Engineer at KDYS Lab (Pvt) Ltd" },
+  { year: "Apr 2026", event: "Frontend Engineer at KDYS Lab (Pvt) Ltd" },
+  { year: "Present", event: "Odoo Techno-Functional Consultant at TechHub" },
 ];
 
 export default function AboutPage() {
@@ -27,16 +28,14 @@ export default function AboutPage() {
             About
           </h1>
           <p className="mt-5 text-base leading-7 text-text-muted">
-            Hey! I'm Abdul Rafay, a MERN stack developer based in Karachi. I
+            Hey! I’m Abdul Rafay, a MERN stack developer based in Karachi. I
             build fast, scalable web applications — from clean UIs to solid
             APIs. In 2023, I started freelancing and shipped 5+ real projects
-            for international clients. Now at KDYS Lab, working on production
-            systems that power actual businesses.{" "}
+            for international clients. Currently at TechHub as an Odoo Techno-Functional Consultant, connecting business processes and technical solutions.{" "}
             <span className="text-text-secondary">
-              I'm also diving deep into AI &amp; agentic workflows through GIAIC.
+              I’m also diving deep into AI &amp; agentic workflows through GIAIC.
             </span>{" "}
-            I'm Micro1 certified as a Frontend Engineer, proving my skills stack
-            up against global standards. Let's build something great.
+            I’m Micro1 certified as a Frontend Engineer. Let’s build something great.
           </p>
         </div>
 
@@ -101,7 +100,7 @@ export default function AboutPage() {
           {/* Desktop: horizontal stepper */}
           <div className="hidden sm:block relative">
             <div className="absolute top-[9px] left-[calc(100%/10)] right-[calc(100%/10)] h-px bg-border" />
-            <ol className="grid grid-cols-5 gap-0 relative">
+            <ol className="grid grid-cols-6 gap-0 relative">
               {careerTimeline.map((item) => (
                 <li
                   key={item.year}

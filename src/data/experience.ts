@@ -6,10 +6,11 @@ export type ExperienceItem = {
 };
 
 export const experience: ExperienceItem[] = [
+  { company: "TechHub", role: "Odoo Techno-Functional Consultant", period: "Present", bullets: ["Working across Odoo ERP technical and functional requirements, connecting business workflows with software solutions."] },
   {
     company: "KDYS Lab (Pvt) Ltd",
     role: "Frontend / MERN Developer",
-    period: "2026 — Present",
+    period: "2026",
     bullets: [
       "Built and maintained 3+ production Next.js modules for a client-facing platform, improving page load time from 5s+ to under 1.5s via lazy loading, code splitting, and image optimization.",
       "Engineered frontend components with custom CSS/JS, reducing layout bugs by 80% through cross-browser testing on Chrome, Firefox, and Safari.",
@@ -32,7 +33,7 @@ export const experience: ExperienceItem[] = [
     period: "2023 — 2026",
     bullets: [
       "Delivered 5+ freelance projects for international clients (UK, UAE, US) — all with 5-star ratings and on-time delivery.",
-      "Built e-commerce, SaaS dashboard, and API-driven web apps — FatimaZ platform now serves 5k+ monthly users.",
+      "Built e-commerce, SaaS dashboard, and API-driven web apps, including the FatimaZ commerce platform.",
       "Maintained 100% client retention rate across all engagements through clear communication and reliable deployment.",
     ],
   },

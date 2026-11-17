@@ -28,7 +28,7 @@ export const projects: Project[] = [
   categories: ["Full-Stack", "Frontend", "API/Backend"],
   tech: ["Next.js", "PostgreSQL", "Prisma", "JavaScript"],
   links: {
-    live: "fyp-ten-delta.vercel.app",
+    live: "https://fyp-ten-delta.vercel.app",
     github: "https://github.com/huzidev/FYP",
   },
 },
@@ -36,9 +36,9 @@ export const projects: Project[] = [
     slug: "fatimaz",
     title: "FatimaZ — E-Commerce Platform",
     description:
-      "Full dynamic e-commerce platform with dual admin+user panel, real-time inventory, order management, and stock updates. Serves 5k+ monthly users in production.",
-    impact: "5k+ monthly users · Production-deployed",
-    categories: ["E-Commerce", "Full-Stack", "Next.js"],
+      "AI-enabled fashion commerce platform connecting the storefront, customer portal and centralized admin operations. Includes product discovery, AI Stylist, virtual try-on, inventory and order workflows.",
+    impact: "Client project · In development",
+    categories: ["E-Commerce", "Full-Stack", "Next.js", "AI/ML"],
     tech: ["Next.js", "React", "Node.js", "MongoDB", "Redux", "Tailwind CSS"],
     featured: true,
     links: {
@@ -84,7 +84,6 @@ export const projects: Project[] = [
   tech: ["Python", "OpenAI", "AI", "Next.js", "React", "Automation"],
   links: {
     github: "https://github.com/AbdulRafay031/AI-Powered_Grocery-Planner",
-    live: "https://fatimaz-shop-app.vercel.app/",
   },
 },
   {
@@ -119,7 +118,6 @@ export const projects: Project[] = [
     categories: ["Frontend", "Next.js"],
     tech: ["Next.js", "Tailwind CSS", "EmailJS"],
     links: {
-      live: "https://portfolio-v3-sage-delta.vercel.app/",
       github: "https://github.com/AbdulRafay031",
     },
   },

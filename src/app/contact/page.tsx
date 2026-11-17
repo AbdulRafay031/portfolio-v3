@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="bg-bg-primary">
       <Container className="py-16 md:py-20">
         <h1 className="text-4xl font-extrabold text-text-primary [font-family:var(--font-display)] sm:text-5xl">
-          Contact
+          Let’s build something.
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-7 text-text-muted">
           For job opportunities, freelance work, or collaboration — send me a

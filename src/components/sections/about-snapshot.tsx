@@ -22,10 +22,10 @@ export function AboutSnapshot() {
                 I build products that feel fast, polished, and reliable.
               </div>
               <p className="mt-4 leading-7 text-text-muted">
-                I'm a MERN Stack Developer with hands-on experience building
+                I’m a MERN Stack Developer with hands-on experience building
                 scalable web platforms including e-commerce and financial
                 systems. I focus on performance, accessibility, and clean
-                architecture — and I'm actively building AI skills through GIAIC
+                architecture — and I’m actively building AI skills through GIAIC
                 (Python, prompt engineering, agentic AI) with public repos on
                 GitHub.
               </p>

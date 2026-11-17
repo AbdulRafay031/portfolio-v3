@@ -1,9 +1,11 @@
 export type SkillGroup = {
   title: string;
-  skills: { name: string; level: number }[];
+  skills: { name: string; level?: number }[];
 };
 
 export const skillGroups: SkillGroup[] = [
+  { title: "Odoo / Functional", skills: ["Business process mapping", "Manufacturing (MRP) & bills of materials", "Inventory & stock movements", "Purchase & Sales workflows", "ERP configuration & testing", "Accounting workflows"].map(name=>({name})) },
+  { title: "Odoo / Technical", skills: ["Python & Odoo ORM", "Custom modules & models", "QWeb reporting", "XML views & actions", "API integration", "PostgreSQL fundamentals"].map(name=>({name})) },
   {
     title: "Frontend",
     skills: [

@@ -77,7 +77,7 @@ export function ContactForm() {
 
       setStatus("success");
 
-      confetti({
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) confetti({
         particleCount: 120,
         spread: 70,
         origin: { y: 0.7 },

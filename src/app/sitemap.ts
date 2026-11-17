@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://example.com";
+  const base = (process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-v3-sage-delta.vercel.app").replace(/\/$/, "");
   const now = new Date();
 
   return [

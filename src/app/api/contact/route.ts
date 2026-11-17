@@ -12,6 +12,20 @@ const schema = z.object({
   website: z.string().optional(), // honeypot
 });
 
+// Best-effort per-instance abuse protection; a distributed limiter is needed
+// for strict enforcement across multiple serverless instances.
+const attempts = new Map<string,{count:number;reset:number}>();
+function rateLimited(req:Request){
+  const now=Date.now();
+  for(const [k,v] of attempts) if(v.reset<=now) attempts.delete(k);
+  const ip=req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  const previous=attempts.get(ip);
+  if(previous && previous.count>=5) return true;
+  if(attempts.size>=10000&&!previous) return true;
+  attempts.set(ip,{count:(previous?.count??0)+1,reset:previous?.reset??now+60000});
+  return false;
+}
+
 function trimEnv(v: string | undefined): string | undefined {
   return v?.trim().replace(/^['"]|['"]$/g, "") || undefined;
 }
@@ -34,6 +48,8 @@ function errorMessageFromUnknown(e: unknown): string {
 
 export async function POST(req: Request) {
   try {
+    if(rateLimited(req)) return Response.json({success:false,error:"Too many attempts. Please try again in a minute."},{status:429});
+    if(Number(req.headers.get("content-length")||0)>8192) return Response.json({success:false,error:"Request too large"},{status:413});
     const body = await req.json();
     const parsed = schema.safeParse(body);
     if (!parsed.success) {

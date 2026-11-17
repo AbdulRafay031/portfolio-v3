@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DownloadCvButton } from "@/components/providers/cv-download-provider";
 import { useRef } from "react";
 import { Container } from "@/components/layout/container";
 import { FiArrowDown, FiArrowUpRight, FiDownload } from "react-icons/fi";
@@ -62,7 +63,7 @@ export function Hero() {
             </div>
 
             <p className="hero-label mt-6 font-mono text-sm text-text-muted">
-              Hello, I'm
+              Hello, I’m
             </p>
 
             <h1 className="hero-title mt-3 text-balance font-[700] tracking-tight text-text-primary [font-family:var(--font-display)] text-4xl leading-tight sm:text-5xl md:text-6xl">
@@ -102,12 +103,11 @@ export function Hero() {
               >
                 View Work <FiArrowUpRight className="h-4 w-4" />
               </Link>
-              <a
-                href="/Abdul-Rafay-Resume.pdf"
+              <DownloadCvButton
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-accent-primary/50 px-6 py-3 font-semibold text-accent-primary transition hover:bg-accent-primary/10"
               >
                 Download CV <FiDownload className="h-4 w-4" />
-              </a>
+              </DownloadCvButton>
             </div>
 
             <div className="hero-scroll mt-12 flex items-center gap-2 text-sm text-text-muted">

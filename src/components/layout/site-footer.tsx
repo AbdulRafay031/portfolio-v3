@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DownloadCvButton } from "@/components/providers/cv-download-provider";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export function SiteFooter() {
@@ -11,13 +12,13 @@ export function SiteFooter() {
               Abdul Rafay
             </div>
             <div className="mt-1 text-sm text-text-muted">
-              MERN Stack Developer · Frontend Engineer · Karachi, Pakistan
+              Odoo Techno-Functional Consultant at TechHub · Full-Stack & AI Developer · Karachi, Pakistan
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <a
-              href="mailto:abdul.rafay.9389@gmail.com"
+              href="mailto:rafay16031@gmail.com"
               aria-label="Email"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-bg-card/40 text-text-secondary backdrop-blur-md transition hover:border-accent-primary/60 hover:shadow-[0_0_18px_rgba(108,99,255,0.35)]"
             >
@@ -55,12 +56,11 @@ export function SiteFooter() {
             <Link href="/contact" className="hover:text-text-secondary">
               Contact
             </Link>
-            <a
-              href="/Abdul-Rafay-Resume.pdf"
+            <DownloadCvButton
               className="hover:text-text-secondary"
             >
               Resume
-            </a>
+            </DownloadCvButton>
           </div>
         </div>
       </div>
